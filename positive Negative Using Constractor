@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+class NumberCheck {
+    private int number;
+    NumberCheck(int num) {
+        number = num;
+    }
+    public void checkNumber() {
+        if (number > 0) {
+            System.out.println(number + " is Positive");
+        } else if (number < 0) {
+            System.out.println(number + " is Negative");
+        } else {
+            System.out.println(number + " is Zero");
+        }
+    }
+}
+
+
