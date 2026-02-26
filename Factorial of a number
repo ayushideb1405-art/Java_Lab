@@ -1,0 +1,81 @@
+Here are the Java programs for your assignment, written cleanly without comments:
+// Factorial of a number
+class Factorial {
+    int fact(int n) {
+        int f = 1;
+        for (int i = 1; i <= n; i++) {
+            f *= i;
+        }
+        return f;
+    }
+    public static void main(String[] args) {
+        Factorial obj = new Factorial();
+        int num = 5;
+        System.out.println("Factorial of " + num + " = " + obj.fact(num));
+    }
+}
+
+
+// Inner class demonstration
+class Outer {
+    int x = 10;
+    class Inner {
+        void display() {
+            System.out.println("Value of x = " + x);
+        }
+    }
+    public static void main(String[] args) {
+        Outer o = new Outer();
+        Outer.Inner i = o.new Inner();
+        i.display();
+    }
+}
+
+
+// Matrix multiplication
+class MatrixMultiplication {
+    public static void main(String[] args) {
+        int a[][] = { {1, 2}, {3, 4} };
+        int b[][] = { {5, 6}, {7, 8} };
+        int c[][] = new int[2][2];
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                c[i][j] = 0;
+                for (int k = 0; k < 2; k++) {
+                    c[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        System.out.println("Result of multiplication:");
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(c[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Matrix subtraction
+class MatrixSubtraction {
+    public static void main(String[] args) {
+        int a[][] = { {5, 6}, {7, 8} };
+        int b[][] = { {1, 2}, {3, 4} };
+        int c[][] = new int[2][2];
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                c[i][j] = a[i][j] - b[i][j];
+            }
+        }
+        System.out.println("Result of subtraction:");
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(c[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
