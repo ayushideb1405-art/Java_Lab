@@ -1,0 +1,17 @@
+class Swap {
+    int a, b;
+    Swap(int x, int y) {
+        a = x; b = y;
+    }
+    void swapValues() {
+        int temp = a;
+        a = b;
+        b = temp;
+        System.out.println("a = " + a + ", b = " + b);
+    }
+    public static void main(String[] args) {
+        Swap obj1 = new Swap(5, 10);
+        obj1.swapValues();
+    }
+}
+
