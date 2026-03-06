@@ -1,0 +1,25 @@
+class AreaCalculator {  
+    double area(double side) {
+        return side * side;
+    }
+    double area(double length, double breadth) {
+        return length * breadth;
+    }
+    double area(float radius) {
+        return Math.PI * radius * radius;
+    }
+    double area(double base, double height, boolean isTriangle) {
+        return 0.5 * base * height;
+    }
+}
+
+public class MethodOverloadingDemo {
+    public static void main(String[] args) {
+        AreaCalculator calc = new AreaCalculator();
+
+        System.out.println("Area of Square (side=5): " + calc.area(5));
+        System.out.println("Area of Rectangle (length=10, breadth=4): " + calc.area(10, 4));
+        System.out.println("Area of Circle (radius=3): " + calc.area(3.0f));
+        System.out.println("Area of Triangle (base=6, height=8): " + calc.area(6, 8, true));
+    }
+}
