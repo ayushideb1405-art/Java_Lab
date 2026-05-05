@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+
+interface Bank {
+    void bankDetails();
+}
+
+
+class Customer {
+    String customerName;
+    String customerId;
+
+    void getCustomerData(String name, String id) {
+        customerName = name;
+        customerId = id;
+    }
+
+    void printCustomerData() {
+        System.out.println("Customer Name: " + customerName);
+        System.out.println("Customer ID: " + customerId);
+    }
+}
+
+
+class Account extends Customer implements Bank {
+    String accountNumber;
+    double balance;
+
+    void getAccountData(String accNo, double bal) {
+        accountNumber = accNo;
+        balance = bal;
+    }
+
+    void printAccountData() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: " + balance);
+    }
+
+    @Override
+    public void bankDetails() {
+        System.out.println("Bank: State Bank of India");
+        System.out.println("Branch: Rajarhat");
+    }
+}
+
+
+public class MultipleInheritanceDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Account acc = new Account();
+
+        System.out.print("Enter Customer Name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter Customer ID: ");
+        String id = sc.nextLine();
+        acc.getCustomerData(name, id);
+
+        System.out.print("Enter Account Number: ");
+        String accNo = sc.nextLine();
+        System.out.print("Enter Balance: ");
+        double bal = sc.nextDouble();
+        acc.getAccountData(accNo, bal);
+
+        System.out.println("\n--- Customer & Account Details ---");
+        acc.printCustomerData();
+        acc.printAccountData();
+        acc.bankDetails();
+    }
+}
