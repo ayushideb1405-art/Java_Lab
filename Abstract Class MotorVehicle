@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+
+abstract class MotorVehicle {
+    String modelName;
+    int modelNumber;
+    double modelPrice;
+
+    MotorVehicle(String name, int number, double price) {
+        modelName = name;
+        modelNumber = number;
+        modelPrice = price;
+    }
+
+    abstract void display();
+}
+
+
+class Car extends MotorVehicle {
+    double discountRate;
+
+    Car(String name, int number, double price, double discountRate) {
+        super(name, number, price);
+        this.discountRate = discountRate;
+    }
+
+    @Override
+    void display() {
+        System.out.println("Car Model Name: " + modelName);
+        System.out.println("Model Number: " + modelNumber);
+        System.out.println("Model Price: " + modelPrice);
+        System.out.println("Discount Rate: " + discountRate + "%");
+    }
+
+    void discount() {
+        double discountAmount = modelPrice * discountRate / 100;
+        double finalPrice = modelPrice - discountAmount;
+        System.out.println("Discount Amount: " + discountAmount);
+        System.out.println("Price after Discount: " + finalPrice);
+    }
+}
+
+
+public class VehicleTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Car Model Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Model Number: ");
+        int number = sc.nextInt();
+
+        System.out.print("Enter Model Price: ");
+        double price = sc.nextDouble();
+
+        System.out.print("Enter Discount Rate (%): ");
+        double rate = sc.nextDouble();
+
+        Car car = new Car(name, number, price, rate);
+
+        System.out.println("\n--- Car Details ---");
+        car.display();
+
+        System.out.println("\n--- Discount Calculation ---");
+        car.discount();
+    }
+}
