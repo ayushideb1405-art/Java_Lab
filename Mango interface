@@ -1,0 +1,47 @@
+
+interface Mango {
+    void showSeason();
+    void mangoVariety();
+}
+
+
+class Winter implements Mango {
+    @Override
+    public void showSeason() {
+        System.out.println("Winter Season: Mangoes are not usually available.");
+    }
+
+    @Override
+    public void mangoVariety() {
+        System.out.println("In Winter, preserved mango products like pickles are common.");
+    }
+}
+
+class Summer implements Mango {
+    @Override
+    public void showSeason() {
+        System.out.println("Summer Season: Mangoes are abundant!");
+    }
+
+    @Override
+    public void mangoVariety() {
+        System.out.println("In Summer, varieties like Alphonso, Himsagar, and Langra are popular.");
+    }
+}
+
+
+public class MangoDemo {
+    public static void main(String[] args) {
+        Mango mangoSeason;
+
+        System.out.println("--- Mango in Winter ---");
+        mangoSeason = new Winter();
+        mangoSeason.showSeason();
+        mangoSeason.mangoVariety();
+
+        System.out.println("\n--- Mango in Summer ---");
+        mangoSeason = new Summer();
+        mangoSeason.showSeason();
+        mangoSeason.mangoVariety();
+    }
+}
