@@ -1,0 +1,46 @@
+import java.util.Scanner;
+abstract class Asset {
+    int assetId;
+    String assetName;
+    double assetValue;
+
+    Asset(int id, String name, double value) {
+        assetId = id;
+        assetName = name;
+        assetValue = value;
+    }
+    abstract void displayDetails();
+}
+class Stock extends Asset {
+    int numberOfShares;
+
+    Stock(int id, String name, double value, int shares) {
+        super(id, name, value);
+        numberOfShares = shares;
+    }
+    @Override
+    void displayDetails() {
+        System.out.println("Stock Details:");
+        System.out.println("Asset ID: " + assetId);
+        System.out.println("Name: " + assetName);
+        System.out.println("Value: " + assetValue);
+        System.out.println("Number of Shares: " + numberOfShares);
+    }
+}
+class Bond extends Asset {
+    double interestRate;
+
+    Bond(int id, String name, double value, double rate) {
+        super(id, name, value);
+        interestRate = rate;
+    }
+    @Override
+    void displayDetails() {
+        System.out.println("Bond Details:");
+        System.out.println("Asset ID: " + assetId);
+        System.out.println("Name: " + assetName);
+        System.out.println("Value: " + assetValue);
+        System.out.println("Interest Rate: " + interestRate + "%");
+    }
+}
+class Savings extends Asset {
