@@ -1,0 +1,75 @@
+import java.util.Scanner;
+interface Gross {
+    void calculateGross();
+}
+
+
+class Employee {
+    String empName;
+    String empId;
+
+    void getEmployeeData(String name, String id) {
+        empName = name;
+        empId = id;
+    }
+
+    void printEmployeeData() {
+        System.out.println("Employee Name: " + empName);
+        System.out.println("Employee ID: " + empId);
+    }
+}
+
+
+class Salary extends Employee implements Gross {
+    double basicPay;
+    double hra;
+    double da;
+    double grossPay;
+
+    void getSalaryData(double basic, double hra, double da) {
+        basicPay = basic;
+        this.hra = hra;
+        this.da = da;
+    }
+
+    @Override
+    public void calculateGross() {
+        grossPay = basicPay + hra + da;
+    }
+
+    void printSalaryData() {
+        System.out.println("Basic Pay: " + basicPay);
+        System.out.println("HRA: " + hra);
+        System.out.println("DA: " + da);
+        System.out.println("Gross Pay: " + grossPay);
+    }
+}
+
+
+public class MultipleInheritanceGrossDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Salary sal = new Salary();
+
+        System.out.print("Enter Employee Name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter Employee ID: ");
+        String id = sc.nextLine();
+        sal.getEmployeeData(name, id);
+
+        System.out.print("Enter Basic Pay: ");
+        double basic = sc.nextDouble();
+        System.out.print("Enter HRA: ");
+        double hra = sc.nextDouble();
+        System.out.print("Enter DA: ");
+        double da = sc.nextDouble();
+
+        sal.getSalaryData(basic, hra, da);
+        sal.calculateGross();
+
+        System.out.println("\n--- Employee & Salary Details ---");
+        sal.printEmployeeData();
+        sal.printSalaryData();
+    }
+}
