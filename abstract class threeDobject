@@ -1,0 +1,122 @@
+import java.util.Scanner;
+abstract class ThreeDObject {
+    abstract double wholeSurfaceArea();
+    abstract double volume();
+}
+
+
+class Box extends ThreeDObject {
+    double length, breadth, height;
+
+    Box(double l, double b, double h) {
+        length = l;
+        breadth = b;
+        height = h;
+    }
+
+    @Override
+    double wholeSurfaceArea() {
+        return 2 * (length * breadth + breadth * height + height * length);
+    }
+
+    @Override
+    double volume() {
+        return length * breadth * height;
+    }
+}
+
+
+class Cube extends ThreeDObject {
+    double side;
+
+    Cube(double s) {
+        side = s;
+    }
+
+    @Override
+    double wholeSurfaceArea() {
+        return 6 * side * side;
+    }
+
+    @Override
+    double volume() {
+        return side * side * side;
+    }
+}
+
+
+class Cylinder extends ThreeDObject {
+    double radius, height;
+
+    Cylinder(double r, double h) {
+        radius = r;
+        height = h;
+    }
+
+    @Override
+    double wholeSurfaceArea() {
+        return 2 * Math.PI * radius * (radius + height);
+    }
+
+    @Override
+    double volume() {
+        return Math.PI * radius * radius * height;
+    }
+}
+
+
+class Cone extends ThreeDObject {
+    double radius, height;
+
+    Cone(double r, double h) {
+        radius = r;
+        height = h;
+    }
+
+    @Override
+    double wholeSurfaceArea() {
+        double slantHeight = Math.sqrt(radius * radius + height * height);
+        return Math.PI * radius * (radius + slantHeight);
+    }
+
+    @Override
+    double volume() {
+        return (Math.PI * radius * radius * height) / 3;
+    }
+}
+
+
+public class ThreeDTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ThreeDObject obj;
+
+        System.out.println("Choose object: 1.Box  2.Cube  3.Cylinder  4.Cone");
+        int choice = sc.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter length, breadth, height: ");
+                obj = new Box(sc.nextDouble(), sc.nextDouble(), sc.nextDouble());
+                break;
+            case 2:
+                System.out.print("Enter side: ");
+                obj = new Cube(sc.nextDouble());
+                break;
+            case 3:
+                System.out.print("Enter radius and height: ");
+                obj = new Cylinder(sc.nextDouble(), sc.nextDouble());
+                break;
+            case 4:
+                System.out.print("Enter radius and height: ");
+                obj = new Cone(sc.nextDouble(), sc.nextDouble());
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                return;
+        }
+
+        System.out.println("Whole Surface Area = " + obj.wholeSurfaceArea());
+        System.out.println("Volume = " + obj.volume());
+    }
+}
