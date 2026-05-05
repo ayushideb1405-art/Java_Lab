@@ -1,0 +1,102 @@
+import java.util.Scanner;
+
+// Abstract class
+abstract class AbstractProduct {
+    int product_id;
+    String product_name;
+    double product_price;
+
+    AbstractProduct(int id, String name, double price) {
+        product_id = id;
+        product_name = name;
+        product_price = price;
+    }
+
+    abstract void displayData();
+}
+
+// TravelGuide subclass
+class TravelGuide extends AbstractProduct {
+    String author;
+
+    TravelGuide(int id, String name, double price, String author) {
+        super(id, name, price);
+        this.author = author;
+    }
+
+    @Override
+    void displayData() {
+        System.out.println("Travel Guide Book Details:");
+        System.out.println("Product ID: " + product_id);
+        System.out.println("Name: " + product_name);
+        System.out.println("Price: " + product_price);
+        System.out.println("Author: " + author);
+    }
+}
+
+// CD subclass
+class CD extends AbstractProduct {
+    String artist;
+
+    CD(int id, String name, double price, String artist) {
+        super(id, name, price);
+        this.artist = artist;
+    }
+
+    @Override
+    void displayData() {
+        System.out.println("CD Details:");
+        System.out.println("Product ID: " + product_id);
+        System.out.println("Name: " + product_name);
+        System.out.println("Price: " + product_price);
+        System.out.println("Artist: " + artist);
+    }
+}
+
+// Main class
+public class ProductTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input TravelGuide
+        System.out.print("Enter Travel Guide ID: ");
+        int tgId = sc.nextInt();
+        sc.nextLine(); // consume newline
+        System.out.print("Enter Travel Guide Name: ");
+        String tgName = sc.nextLine();
+        System.out.print("Enter Travel Guide Price: ");
+        double tgPrice = sc.nextDouble();
+        sc.nextLine();
+        System.out.print("Enter Author: ");
+        String author = sc.nextLine();
+
+        TravelGuide tg = new TravelGuide(tgId, tgName, tgPrice, author);
+
+        // Input CD
+        System.out.print("\nEnter CD ID: ");
+        int cdId = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter CD Name: ");
+        String cdName = sc.nextLine();
+        System.out.print("Enter CD Price: ");
+        double cdPrice = sc.nextDouble();
+        sc.nextLine();
+        System.out.print("Enter Artist: ");
+        String artist = sc.nextLine();
+
+        CD cd = new CD(cdId, cdName, cdPrice, artist);
+
+        
+        System.out.println("\n--- Displaying Products by ID ---");
+        System.out.print("Enter Product ID to display: ");
+        int searchId = sc.nextInt();
+
+        if (searchId == tg.product_id) {
+            tg.displayData();
+        } else if (searchId == cd.product_id) {
+            cd.displayData();
+        } else {
+            System.out.println("Product not found!");
+        }
+    }
+}
