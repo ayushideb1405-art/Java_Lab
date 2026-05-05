@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+
+interface CommercialWork {
+    void assignWork(String work);
+    void showWork();
+}
+
+
+interface Management {
+    void assignManager(String manager);
+    void showManager();
+}
+
+class Employee {
+    String empName;
+    String empId;
+
+    void getEmployeeData(String name, String id) {
+        empName = name;
+        empId = id;
+    }
+
+    void printEmployeeData() {
+        System.out.println("Employee Name: " + empName);
+        System.out.println("Employee ID: " + empId);
+    }
+}
+
+
+class WorkManagementSystem extends Employee implements CommercialWork, Management {
+    String workAssigned;
+    String managerAssigned;
+
+    @Override
+    public void assignWork(String work) {
+        workAssigned = work;
+    }
+
+    @Override
+    public void showWork() {
+        System.out.println("Assigned Work: " + workAssigned);
+    }
+
+    @Override
+    public void assignManager(String manager) {
+        managerAssigned = manager;
+    }
+
+    @Override
+    public void showManager() {
+        System.out.println("Manager Assigned: " + managerAssigned);
+    }
+
+    void displayDetails() {
+        printEmployeeData();
+        showWork();
+        showManager();
+    }
+}
+
+
+public class CommercialWorkDriver {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        WorkManagementSystem wms = new WorkManagementSystem();
+
+        System.out.print("Enter Employee Name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter Employee ID: ");
+        String id = sc.nextLine();
+        wms.getEmployeeData(name, id);
+
+        System.out.print("Enter Work Assigned: ");
+        String work = sc.nextLine();
+        wms.assignWork(work);
+
+        System.out.print("Enter Manager Assigned: ");
+        String manager = sc.nextLine();
+        wms.assignManager(manager);
+
+        System.out.println("\n--- Commercial Work Management System ---");
+        wms.displayDetails();
+    }
+}
